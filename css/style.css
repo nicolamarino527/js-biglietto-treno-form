@@ -5,8 +5,32 @@
     box-sizing: border-box;
 }
 #container {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(210, 22, 79);
+
 }
 #title {
     text-align: center;
+}
+#form {
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 20px;
+    height: 200px;
+    width: 60%;
+    flex-wrap: wrap;
+    gap: 5%;
+    display: flex;
+    justify-content: center;
+}
+.form-label {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 100px;
+}
+.form-buttons {
+    display: flex;
 }
