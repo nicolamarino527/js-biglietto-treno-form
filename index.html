@@ -5,9 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biglietti Treno</title>
 </head>
-<body>
+<body id="container">
+    <!-- titolo -->
+    <h1 id="title">Prendi il tuo biglietto</h1>
+    <form id="form" action="">
+        <!-- box per l'inserimento del nome -->
+        <label for="name-field">Inserisci il tuo nome:</label>
+        <input type="text" id="name-field" placeholder="Nome">
     
-    <h1>Prendi il tuo biglietto</h1>
+        <!-- box per l'inserimento dei chilometri -->
+        <label for="length-field">Inserisci il numero di chilometri:</label>
+        <input type="number" id="length-field" placeholder="Chilometri">
+
+        <!-- box per la selezione della fascia d'età -->
+        <label for="age-field">Seleziona la tua fascia di età:</label>
+        <select id="age-field">
+            <option value="under18">Sotto i 18 anni</option>
+            <option value="adult">Tra i 18 e i 64 anni</option>
+            <option value="over65">Sopra i 65 anni</option>
+        </select>
+        
+        <!-- bottone per invio dati -->
+        <button type="submit" id="submit-field">Calcola</button>
+    </form>
+
+    <!-- Sezione per mostrare i dati inseriti -->
+    <div id="output">
+        <h2>Dati Inseriti:</h2>
+        <p><strong>Nome:</strong> <span id="name-output"></span></p>
+        <p><strong>Chilometri:</strong> <span id="length-output"></span></p>
+        <p><strong>Fascia d'età:</strong> <span id="age-output"></span></p>
+        <p><strong>Prezzo Totale:</strong> €<span id="price-output"></span></p>
+        <p><strong>Offerta:</strong> <span id="offer-output"></span></p>
+        <p><strong>Carrozza:</strong> <span id="carriage-output"></span></p>
+        <p><strong>Codice CP:</strong> <span id="cp-output"></span></p>
+    </div>
 
     <script src="./script.js"></script>
 </body>

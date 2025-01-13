@@ -28,30 +28,78 @@
 
 // ---------------------------- MILESTONE 1:
 
-// 1-chiediamo all utente di inserire le due variabili (età, numero di kilometri).
-let eta = prompt("inserisci la tua età")
-let lenght = prompt("inserisci il numero di chilometri")
+// costanti di input
+const nameField = document.getElementById('name-field');
+const lengthField = document.getElementById('length-field');
+const ageField = document.getElementById('age-field');
+const form = document.getElementById('form');
 
+// costanti di output
+const nameOutput = document.getElementById('name-output');
+const lengthOutput = document.getElementById('length-output');
+const ageOutput = document.getElementById('age-output');
+const priceOutput = document.getElementById('price-output');
+const offerOutput = document.getElementById('offer-output');
+const carriageOutput = document.getElementById('carriage-output');
+const cpOutput = document.getElementById('cp-output');
 
-// 2-ora stabiliamo il prezzo del prezzo in base alla lunghezza della tratta.
-let price = lenght * 0.21;
-
-// 3-iseriamo le variabili del prezzo in base all'età:
-
-//-se l'età è compresa tra i 18 e i 64 anni il prezzo è invariato:
-let discountPrice = price;
-
-//-se l'età é minore di 18 anni si attua uno sconto del 20%:
-if (age < 18) {
-    discountPrice = price - (price * 20 / 100);
-
-//-se invece l'età é maggiore di 65 anni si attua uno sconto del 40%:
-} else if (age>65) {
-    discountPrice = price - (price * 40 / 100);
+// funzione per generare un numero casuale da 1 a 9
+function generateRandomCarriage() {
+    return Math.floor(Math.random() * 9) + 1;
 }
 
-// 4-convertiamo il prezzo ad un valore avente due decimali:
-let finalPrice = discountPrice.toFixed(2);
+// funzione per generare un codice CP casuale (5 cifre)
+function generateRandomCP() {
+    let cp = '';
+    for (let i = 0; i < 5; i++) {
+        cp += Math.floor(Math.random() * 10); // aggiunge una cifra casuale tra 0 e 9
+    }
+    return cp;
+}
 
-// 5-stampiamo al cliente il valore in euro del csto delò biglietto:
-console.log(`Il prezzo del tuo biglietto è di: ${finalPrice} €.`);
+// gestione dati
+form.addEventListener('submit', (event) => {
+    // blocco invio form
+    event.preventDefault();
+    
+    // ottieni i valori dai campi
+    const name = nameField.value;
+    const length = parseFloat(lengthField.value);
+    const ageGroup = ageField.value;
+
+    // calcola il prezzo base
+    let price = length * 0.21;
+
+    // applica sconti in base all'età
+    if (ageGroup === 'under18') {
+        price *= 0.8; // sconto 20%
+    } else if (ageGroup === 'over65') {
+        price *= 0.6; // sconto 40%
+    }
+
+    // determina l'offerta in base all'età
+    let offer = '';
+    if (ageGroup === 'adult') {
+        offer = 'Offerta Standard';
+    } else {
+        offer = 'Offerta Sconto';
+    }
+
+    // genera il numero della carrozza
+    const carriage = generateRandomCarriage();
+
+    // genera il codice CP
+    const cp = generateRandomCP();
+
+    // mostra i dati nelle rispettive aree di output
+    nameOutput.textContent = name;
+    lengthOutput.textContent = length;
+    ageOutput.textContent = ageField.options[ageField.selectedIndex].text;
+    priceOutput.textContent = price.toFixed(2);
+    offerOutput.textContent = offer;
+    carriageOutput.textContent = carriage;
+    cpOutput.textContent = cp;
+
+    // log
+    console.log("Dati mostrati sulla pagina");
+});
