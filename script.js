@@ -29,7 +29,7 @@
 // ---------------------------- MILESTONE 1:
 
 // 1-chiediamo all utente di inserire le due variabili (età, numero di kilometri).
-let age = prompt("inserisci la tua età")
+let eta = prompt("inserisci la tua età")
 let lenght = prompt("inserisci il numero di chilometri")
 
 
